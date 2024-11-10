@@ -1,0 +1,6 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1731276320
+!GLOBAL.gd::GDScript::-1::1730934350::0::1::::<>Node<>::
+icon.svg::CompressedTexture2D::5005553152138189332::1730847918::1730847927::1::::<><>::
+player.gd::GDScript::-1::1730936225::0::1::::<>CharacterBody2D<>::
+test_0.tscn::PackedScene::601475963723144950::1731276313::0::1::::<><>::uid://cdkyy13mhy0s3::::res://icon.svg<>res://player.gd
