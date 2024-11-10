@@ -14,7 +14,7 @@ const DRAG = 5000
 const AIRDRAG = 500
 
 const DASHVEL = 1000
-
+#git test
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var JUMPVEL = -4*JUMP_HEIGHT/JUMP_TIME
 var gravity = 8 / JUMP_TIME / JUMP_TIME * JUMP_HEIGHT#ProjectSettings.get_setting("physics/2d/default_gravity")
