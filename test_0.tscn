@@ -58,10 +58,12 @@ texture = ExtResource("1_rb47o")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="env"]
 position = Vector2(565, 664)
+scale = Vector2(36.2, 1)
 
 [node name="Icon" type="Sprite2D" parent="env/StaticBody2D"]
 scale = Vector2(12.5, 1)
 texture = ExtResource("1_rb47o")
+region_rect = Rect2(0, 0, 126, 127)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D"]
 shape = SubResource("RectangleShape2D_vpdvb")
