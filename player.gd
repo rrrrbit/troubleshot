@@ -2,111 +2,95 @@ extends CharacterBody2D
 
 #todo:
 #optimise logic
-#complete implementation of short dash
+#complete implementation of short dash 
 
 const JUMP_TIME=0.6
 const JUMP_HEIGHT=150
 
-const MAXSPEED = 1000
+const MAXSPEED = 1250
 
-const ACCEL = 2000
-const DRAG = 5000
-const AIRDRAG = 500
+const ACCEL = 3000
+const DRAG = 4500
+const AIRDRAG = 300
 
 const DASHVEL = 2500
 
 const DASHTIME = 0.1
-
-const MAXWALLJUMP = 3
 #git test
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var JUMPVEL = -4*JUMP_HEIGHT/JUMP_TIME
+
 var gravity = 8 / JUMP_TIME / JUMP_TIME * JUMP_HEIGHT#ProjectSettings.get_setting("physics/2d/default_gravity")
-var wallcling=false
 
-var prevWallcling=false
+var direction = Vector2(0,0)
 
+var dashing = false
+var hasDBounced=false
 
-var walljumpCount=0
-
-var justJumped = false
-
-var direction
+var lastVel = Vector2.ZERO
 
 func Dash(v):
-	print(round(velocity))	
-	velocity += v
-	print(round(velocity))
+	var lastVel  =velocity
+	velocity = v
+	dashing = true
+	hasDBounced = false
 	await GLOBAL.Wait(DASHTIME)
-	velocity -= v
-	print(round(velocity))
+	if not hasDBounced:
+		velocity = lastVel
+	dashing = false
+	hasDBounced = false
+
+func _init():
+	pass
+
+func _process(delta):
+	direction = Vector2(Input.get_axis("-x","+x"),-Input.get_axis("-y","+y"))
+	
+	$Trail.global_position = Vector2(0,0)
+	$Trail.add_point(position,0)
+	$Trail.remove_point(100)
+	
+	$Camera2D/debugText.text = ("vel: " + 
+	str(round(velocity.x)) + ", " +
+	str(round(velocity.y))+ " normalised: " + 
+	str(round(velocity.length())))
 
 func _physics_process(delta):
-	var lastCollisionExists = get_last_slide_collision() != null
-	var wallDir
-
-	if lastCollisionExists and not is_on_floor() and is_on_wall():
-		wallDir = ceil(get_last_slide_collision().get_normal().x)
-		wallcling= -wallDir==Input.get_axis("-x","+x")
-		if wallcling:
-			if !prevWallcling:
-				justJumped = true
-				velocity.y =0
-				
-	if Input.is_action_just_pressed("d"):
-		if wallcling:
-			if walljumpCount>0:
-				Dash(Vector2(DASHVEL* -Input.get_axis("-x","+x"),0))
-				direction = 0
-				walljumpCount-=1
-		elif not is_on_floor():
-			velocity.x += DASHVEL*Input.get_axis("-x","+x")
-			match Input.get_axis("-y","+y"):
-				1.:
-					velocity.y = DASHVEL*-1.25
-				0.:
-					velocity.y = 0
-				-1.:
-					velocity.y = DASHVEL*1.25
-			justJumped = false
-		else: 
-			velocity.x += DASHVEL*Input.get_axis("-x","+x")
-
-	if not is_on_floor():
-		if is_on_wall() and wallcling:
-			velocity.y += gravity / 5 * delta
-			
-		else:
-			velocity.y += gravity * delta
-	else:
-		direction = Input.get_axis("-x","+x")
-		justJumped = true
-		walljumpCount = MAXWALLJUMP
 	
-	if not is_on_wall() or is_on_floor():
-		wallcling = false
+	
+	var lastCollisionExists = get_last_slide_collision() != null
+				
+	if dashing:
+		if lastCollisionExists:
+			velocity = lastVel.bounce(get_last_slide_collision().get_normal())*0.7
+			print("has dbounced")
+			hasDBounced = true
+				
+	if Input.is_action_just_pressed("d") and not direction.is_zero_approx():
+		if not is_on_floor():
+			velocity.y=0
+			Dash(direction.normalized()*DASHVEL)
+		else: 
+			Dash(Vector2(DASHVEL* direction.x,0))
+	# gravity
+	if not is_on_floor() and not dashing:
+		velocity.y += gravity * delta
 
-	# Handle jump.
-	if Input.is_action_pressed("+y") and (is_on_floor() or wallcling):
-		if wallcling and lastCollisionExists:
-			if walljumpCount > 0:
-				velocity = Vector2(MAXSPEED*wallDir,JUMPVEL)
-				walljumpCount -= 1
-		else:
-			velocity.y = JUMPVEL
+	# jump
+	if Input.is_action_pressed("+y") and is_on_floor():
+		velocity.y = JUMPVEL
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	if Input.is_action_just_pressed("-x") or Input.is_action_just_pressed("+x") or Input.is_action_just_released("-x") or Input.is_action_just_released("+x"):
-		direction = Input.get_axis("-x","+x")
-	if direction and abs(velocity.x)<=MAXSPEED:
-		velocity.x += ACCEL * direction * delta
-		if sign(direction) != sign(velocity.x):
+	if not dashing:
+		if direction.x and abs(velocity.x)<=MAXSPEED:
+			velocity.x += ACCEL * direction.x * delta
+			if sign(direction.x) != sign(velocity.x):
+				velocity.x = move_toward(velocity.x,0,DRAG*delta)
+		elif is_on_floor():
 			velocity.x = move_toward(velocity.x,0,DRAG*delta)
-	elif is_on_floor():
-		velocity.x = move_toward(velocity.x,0,DRAG*delta)
-	else:
-		velocity.x = move_toward(velocity.x,0,AIRDRAG*delta)
+		else:
+			velocity.x = move_toward(velocity.x,0,AIRDRAG*delta)
 	
-	prevWallcling = wallcling
+	lastVel = velocity
 	move_and_slide()

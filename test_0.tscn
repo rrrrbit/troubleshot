@@ -24,6 +24,17 @@ texture = ExtResource("1_rb47o")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
+[node name="debugText" type="RichTextLabel" parent="CharacterBody2D/Camera2D"]
+offset_left = -449.0
+offset_top = -307.0
+offset_right = 548.0
+offset_bottom = -267.0
+text = "sdfdsakjfajkhdgf"
+
+[node name="Trail" type="Line2D" parent="CharacterBody2D"]
+position = Vector2(-494, -526)
+width = 5.0
+
 [node name="env" type="Node2D" parent="."]
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="env"]
