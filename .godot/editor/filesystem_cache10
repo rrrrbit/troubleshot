@@ -1,0 +1,14 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1753734983
+!GLOBAL.gd::GDScript/GDScript::1310303358646941315::1730934350::0::1::::<>Node<><>0<>0<><>::
+icon.svg::CompressedTexture2D/CompressedTexture2D::5005553152138189332::1730847918::1753734971::1::::<><><>0<>0<>fd63a2bc792a75f0ec72c82f4ca3c1eb<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+player.gd::GDScript/GDScript::8327307642092704401::1752107349::0::1::::<>CharacterBody2D<><>0<>0<><>::
+test_0.tscn::PackedScene::601475963723144950::1753734984::0::1::::<><><>0<>0<><>::uid://cdkyy13mhy0s3::::res://icon.svg<>uid://dqv2smrhlar5b::::res://player.gd
+::res://addons/::1731281751
+::res://addons/godot-git-plugin/::1753734971
+git_plugin.gdextension::GDExtension/GDExtension::2706841129177583345::1731281751::0::1::::<><><>0<>0<><>::
+plugin.cfg::TextFile/TextFile::-1::1731281752::0::1::::<><><>0<>0<><>::
+THIRDPARTY.md::TextFile/TextFile::-1::1731281752::0::1::::<><><>0<>0<><>::
+::res://addons/godot-git-plugin/linux/::1731281751
+::res://addons/godot-git-plugin/macos/::1731281752
+::res://addons/godot-git-plugin/win64/::1753734977

@@ -1,8 +1,11 @@
-RichTextLabel
+CanvasLayer
+ColorRect
+Sprite2D
+CanvasModulate
 Line2D
+RichTextLabel
 Node2D
 Camera2D
-Sprite2D
 CollisionShape2D
 CharacterBody2D
 StaticBody2D
