@@ -8,7 +8,7 @@ const DRAG = 4500
 const AIR_DRAG = 300
 const SLIDE_DRAG = 500
 
-const WALLCLING_VERTICAL_DRAG = 10
+const WALLCLING_VERTICAL_DRAG = 7.5
 
 const DASH_VEL = 2500
 const DASH_TIME = 0.125
@@ -18,6 +18,7 @@ var GRAVITY : float = 8 / JUMP_TIME / JUMP_TIME * JUMP_HEIGHT
 
 var direction := Vector2.ZERO
 var lastVel := Vector2.ZERO
+var lastDashVel := Vector2.ZERO
 
 var dashing := false
 var hasDBounced := false
@@ -58,7 +59,7 @@ func _physics_process(delta):
 			Dash(Vector2(DASH_VEL * direction.x,0))
 	
 	wallcling = is_on_wall_only() and lastColNormal.dot(lastVel) < 0
-	
+
 	# gravity
 	if not is_on_floor() and not dashing:
 		velocity.y += GRAVITY * delta
@@ -69,10 +70,17 @@ func _physics_process(delta):
 	# jump
 	if Input.is_action_pressed("+y"):
 		if is_on_floor():
-			velocity.y = JUMP_VEL + (velocity.y if dashing else 0)
+			velocity.y = JUMP_VEL + (velocity.y if dashing and lastDashVel.x == 0 else 0) # additional height if you press ajump while d-bouncing from down dash
 		if wallcling and not dashing:
 			velocity.y = JUMP_VEL * 1.25
 			velocity.x = direction.x * JUMP_VEL
+			
+	#if Input.is_action_pressed("+y") and not dashing:
+		#if is_on_floor():
+			#velocity.y = JUMP_VEL
+		#if wallcling:
+			#velocity.y = JUMP_VEL * 1.25
+			#velocity.x = direction.x * JUMP_VEL
 
 	#horizontal mvmt
 	if not dashing:
@@ -90,7 +98,7 @@ func _physics_process(delta):
 			
 	lastVel = velocity
 	move_and_slide()
-	update_gizmos()
+	#update_gizmos()
 	
 func update_gizmos():
 	for i in debugGizmos:
@@ -98,33 +106,30 @@ func update_gizmos():
 	debugGizmos.clear()
 	
 	for i in get_slide_collisions():
-		var colNormlGiz := Line2D.new()
-		get_parent().add_child(colNormlGiz)
-		debugGizmos.append(colNormlGiz)
-		
-		colNormlGiz.global_position = Vector2(0,0)
-		colNormlGiz.add_point(i.get_position())
-		colNormlGiz.add_point(i.get_position()+i.get_normal()*25.0)
-		colNormlGiz.width = 2.0
-		
-	var dirGiz := Line2D.new()
-	get_parent().add_child(dirGiz)
-	debugGizmos.append(dirGiz)
+		rayGizmo(i.get_position(), i.get_normal()*25.0, Color.WHITE)
 	
-	dirGiz.global_position = Vector2(0,0)
-	dirGiz.add_point(position)
-	dirGiz.add_point(position+ direction.normalized() * 50.0)
-	dirGiz.default_color = Color.RED
-	dirGiz.width = 2.0
+	rayGizmo(position, direction.normalized()*50, Color.RED)
+	rayGizmo(position, velocity/10.0, Color.GREEN)
+
+func rayGizmo(start: Vector2, dir: Vector2, color: Color):
+	var ray := Line2D.new()
+	get_parent().add_child(ray)
+	debugGizmos.append(ray)
 	
-func Dash(v):
+	ray.global_position = Vector2(0,0)
+	ray.add_point(start)
+	ray.add_point(start+dir)
+	ray.default_color = color
+	ray.width = 2.0
+
+func Dash(v: Vector2):
 	var lastVel = velocity
+	lastDashVel = v.normalized()
 	velocity = v
 	dashing = true
 	hasDBounced = false
 	await GLOBAL.Wait(DASH_TIME)
 	
-	#variant 2: short (hardstop, snappy)/long (impulse-based, committed) dash distinction by keypress length. d-bounce always goes to long dash
 	if not hasDBounced:
 		if Input.is_action_pressed("d"):
 			print("long dash")
@@ -135,6 +140,7 @@ func Dash(v):
 		else:
 			print("short dash")
 			velocity = lastVel
+	else: print("dbounce")
 	
 	dashing = false
 	hasDBounced = false

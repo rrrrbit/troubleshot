@@ -1,10 +1,12 @@
+Sprite2D
+Marker2D
+MeshInstance2D
+Node2D
 CanvasLayer
 ColorRect
-Sprite2D
 CanvasModulate
 Line2D
 RichTextLabel
-Node2D
 Camera2D
 CollisionShape2D
 CharacterBody2D
