@@ -23,9 +23,10 @@ var lastDashVel := Vector2.ZERO
 var dashing := false
 var hasDBounced := false
 
-var debugGizmos : Array[Node2D]
-
 var wallcling := false
+var ceilingcling := false
+
+var jumpsLeft := 2
 
 func _init():
 	pass
@@ -33,23 +34,24 @@ func _init():
 func _process(delta):
 	direction = Vector2(Input.get_axis("-x","+x"),-Input.get_axis("-y","+y"))
 	
-	$Trail.global_position = Vector2(0,0)
-	$Trail.add_point(position,0)
-	$Trail.remove_point(100)
+	
 	
 	%HUD/debugText.text = ("vel: " + 
 	str(round(velocity.x)) + ", " +
 	str(round(velocity.y))+ " normalised: " + 
-	str(round(velocity.length())))
+	str(round(velocity.length())) + "\nfps: " + 
+	str(Engine.get_frames_per_second()))
+
 
 func _physics_process(delta):
+	
 	var lastColNormal := Vector2.ZERO
 	if get_last_slide_collision() != null: lastColNormal = get_last_slide_collision().get_normal()
 	
 	if dashing:
 		if lastColNormal.dot(lastVel) < 0:
 			velocity = lastVel.bounce(lastColNormal) * (1.0 if hasDBounced else 0.7)
-			hasDBounced = true
+			hasDBounced = true and not (wallcling or ceilingcling)
 				
 	if Input.is_action_just_pressed("d") and not direction.is_zero_approx():
 		if not is_on_floor():
@@ -59,37 +61,40 @@ func _physics_process(delta):
 			Dash(Vector2(DASH_VEL * direction.x,0))
 	
 	wallcling = is_on_wall_only() and lastColNormal.dot(lastVel) < 0
-
+	ceilingcling = is_on_ceiling() and Input.is_action_pressed("+y") and not dashing
 	# gravity
 	if not is_on_floor() and not dashing:
 		velocity.y += GRAVITY * delta
 
 	if wallcling and velocity.y > 0:
 		velocity.y -= WALLCLING_VERTICAL_DRAG * velocity.y * delta
-
+	
+	if ceilingcling:
+		velocity.y = 0
+	
+	if is_on_floor():
+		jumpsLeft = 1
+		
 	# jump
+	
 	if Input.is_action_pressed("+y"):
 		if is_on_floor():
-			velocity.y = JUMP_VEL + (velocity.y if dashing and lastDashVel.x == 0 else 0) # additional height if you press ajump while d-bouncing from down dash
-		if wallcling and not dashing:
+			velocity.y = JUMP_VEL + (velocity.y if dashing and lastDashVel.x == 0 else 0)
+		if wallcling and not (dashing or ceilingcling or direction.x == 0):
 			velocity.y = JUMP_VEL * 1.25
-			velocity.x = direction.x * JUMP_VEL
-			
-	#if Input.is_action_pressed("+y") and not dashing:
-		#if is_on_floor():
-			#velocity.y = JUMP_VEL
-		#if wallcling:
-			#velocity.y = JUMP_VEL * 1.25
-			#velocity.x = direction.x * JUMP_VEL
+			velocity.x = -lastColNormal.x * JUMP_VEL
 
+	if not is_on_floor() and jumpsLeft > 0 and Input.is_action_just_pressed("+y"):
+		velocity.y = JUMP_VEL
+		jumpsLeft -= 1
 	#horizontal mvmt
 	if not dashing:
 		if direction.x and abs(velocity.x)<=MAX_SPEED:
 			velocity.x += ACCEL * direction.x * delta
 			if sign(direction.x) != sign(velocity.x):
 				velocity.x = move_toward(velocity.x,0,DRAG*delta)
-		elif is_on_floor():
-			if Input.is_action_pressed("-y"):
+		elif is_on_floor() or ceilingcling:
+			if Input.is_action_pressed("-y") and not ceilingcling:
 				velocity.x = move_toward(velocity.x,0,SLIDE_DRAG*delta)
 			else:
 				velocity.x = move_toward(velocity.x,0,DRAG*delta)
@@ -98,29 +103,15 @@ func _physics_process(delta):
 			
 	lastVel = velocity
 	move_and_slide()
-	#update_gizmos()
 	
-func update_gizmos():
-	for i in debugGizmos:
-		i.queue_free()
-	debugGizmos.clear()
-	
-	for i in get_slide_collisions():
-		rayGizmo(i.get_position(), i.get_normal()*25.0, Color.WHITE)
-	
-	rayGizmo(position, direction.normalized()*50, Color.RED)
-	rayGizmo(position, velocity/10.0, Color.GREEN)
+	#queue_redraw()
 
-func rayGizmo(start: Vector2, dir: Vector2, color: Color):
-	var ray := Line2D.new()
-	get_parent().add_child(ray)
-	debugGizmos.append(ray)
-	
-	ray.global_position = Vector2(0,0)
-	ray.add_point(start)
-	ray.add_point(start+dir)
-	ray.default_color = color
-	ray.width = 2.0
+func _draw():
+	draw_set_transform_matrix(global_transform.affine_inverse())
+	for i in get_slide_collisions():
+		draw_line(i.get_position(), i.get_position()+i.get_normal()*25.0, Color.WHITE, -2)
+	draw_line(position,position+direction.normalized()*50, Color.RED, -2)
+	draw_line(position, position+velocity/10.0, Color.GREEN, -2)
 
 func Dash(v: Vector2):
 	var lastVel = velocity
@@ -132,15 +123,17 @@ func Dash(v: Vector2):
 	
 	if not hasDBounced:
 		if Input.is_action_pressed("d"):
-			print("long dash")
+			#print("long dash")
 			velocity -= (velocity - lastVel) * 0.25
 		elif velocity.dot(lastVel) < 0:
-			print("short dash reverse stop")
+			#print("short dash reverse stop")
 			velocity = v * 0.1
 		else:
 			print("short dash")
 			velocity = lastVel
-	else: print("dbounce")
+	else: 
+		#print("dbounce")
+		pass
 	
 	dashing = false
 	hasDBounced = false

@@ -1,64 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://itmhr03x6ife"]
+[gd_scene load_steps=8 format=3 uid="uid://itmhr03x6ife"]
 
 [ext_resource type="Texture2D" uid="uid://cdkyy13mhy0s3" path="res://icon.svg" id="1_rb47o"]
 [ext_resource type="Script" uid="uid://cw3mohcrsvvyw" path="res://playerCamera.gd" id="1_ssdac"]
 [ext_resource type="Script" uid="uid://dm6hctn6syplk" path="res://cursor.gd" id="2_w643a"]
 [ext_resource type="Script" uid="uid://dqv2smrhlar5b" path="res://player.gd" id="2_wd0p1"]
 
-[sub_resource type="Curve" id="Curve_w643a"]
-_limits = [0.0, 2.0, 0.0, 2560.0]
-_data = [Vector2(0, 1), 0.0, -0.0003, 0, 1, Vector2(2500, 0.25), -0.0003, 0.0, 1, 0]
-point_count = 2
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctg5o"]
 size = Vector2(50, 50)
-
-[sub_resource type="Gradient" id="Gradient_atwmd"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1)
-metadata/_snap_enabled = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpdvb"]
 size = Vector2(1600, 128)
 
+[sub_resource type="Curve" id="Curve_w643a"]
+_limits = [0.0, 1.25, 0.0, 3000.0]
+_data = [Vector2(0, 1.25), 0.0, 0.0, 0, 0, Vector2(1133.61, 1.03987), -0.00047722, -0.00047722, 0, 0, Vector2(3000, 0.333), -4.37424e-05, 0.0, 0, 0]
+point_count = 3
+
 [node name="Node2D" type="Node2D"]
-
-[node name="playerCam" type="Camera2D" parent="." node_paths=PackedStringArray("target", "cursor")]
-unique_name_in_owner = true
-position = Vector2(494, 526)
-zoom = Vector2(0.75, 0.75)
-process_callback = 0
-script = ExtResource("1_ssdac")
-target = NodePath("../player")
-cursor = NodePath("../player/cursor")
-smoothingTime = 0.3
-smoothingFactor = 0.5
-velocityOffset = Vector2(0.5, 0.2)
-velSmoothingTime = 0.3
-velSmoothingFactor = 0.5
-cursorOffset = Vector2(0.1, 0.1)
-cursorSmoothingTime = 0.075
-cursorSmoothingFactor = 0.5
-velocityZoom = SubResource("Curve_w643a")
-velocityZoomMult = Vector2(1, 0)
-zoomSmoothTime = 0.5
-zoomSmoothOffset = 0.5
-
-[node name="cameratarget" type="Sprite2D" parent="playerCam"]
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_rb47o")
-
-[node name="cameratarget2" type="Sprite2D" parent="playerCam"]
-modulate = Color(0, 1, 0, 1)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_rb47o")
-
-[node name="cameratarget4" type="Sprite2D" parent="playerCam"]
-modulate = Color(0, 0, 1, 1)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_rb47o")
 
 [node name="player" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
@@ -72,16 +30,10 @@ shape = SubResource("RectangleShape2D_ctg5o")
 scale = Vector2(0.390625, 0.390625)
 texture = ExtResource("1_rb47o")
 
-[node name="Trail" type="Line2D" parent="player"]
-z_index = -1
-position = Vector2(-494, -526)
-width = 5.0
-gradient = SubResource("Gradient_atwmd")
-
 [node name="cursor" type="Node2D" parent="player"]
 position = Vector2(-118, -44)
 script = ExtResource("2_w643a")
-sensitivity = 2.0
+sensitivity = 2.25
 
 [node name="Sprite2D" type="Sprite2D" parent="player/cursor"]
 scale = Vector2(0.1, 0.1)
@@ -120,7 +72,7 @@ scale = Vector2(0.390625, 0.390625)
 texture = ExtResource("1_rb47o")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="env"]
-position = Vector2(565, 664)
+position = Vector2(-25539, 664)
 scale = Vector2(36.2, 1)
 
 [node name="Icon" type="Sprite2D" parent="env/StaticBody2D"]
@@ -153,6 +105,35 @@ texture = ExtResource("1_rb47o")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D3"]
 shape = SubResource("RectangleShape2D_vpdvb")
 
+[node name="playerCam" type="Camera2D" parent="." node_paths=PackedStringArray("target", "cursor")]
+unique_name_in_owner = true
+position = Vector2(494, 526)
+script = ExtResource("1_ssdac")
+target = NodePath("../player")
+cursor = NodePath("../player/cursor")
+boundaryPadding = Vector2(100, 100)
+targetZone = Vector2(100, 300)
+lookahead = Vector2(0.3, 0.3)
+cursorInfluence = Vector2(0.1, 0.1)
+groundedOffset = Vector2(0, -50)
+zoomOverVelocity = SubResource("Curve_w643a")
+smoothK = 0.25
+smoothT = 0.05
+lookaheadSmoothK = 0.25
+lookaheadSmoothT = 0.1
+dzSmoothK = 0.25
+dzSmoothT = 0.2
+cursorSmoothK = 0.25
+cursorSmoothT = 0.02
+zoomSmoothK = 0.1
+zoomSmoothT = 0.1
+
+[node name="cameratarget4" type="Sprite2D" parent="playerCam"]
+visible = false
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_rb47o")
+
 [node name="HUD" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
@@ -160,5 +141,5 @@ unique_name_in_owner = true
 offset_left = 37.0
 offset_top = 31.0
 offset_right = 1034.0
-offset_bottom = 71.0
+offset_bottom = 111.0
 text = "sdfdsakjfajkhdgf"
