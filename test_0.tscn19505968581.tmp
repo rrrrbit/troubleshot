@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=3 uid="uid://itmhr03x6ife"]
+
+[ext_resource type="Texture2D" uid="uid://cdkyy13mhy0s3" path="res://icon.svg" id="1_rb47o"]
+[ext_resource type="Script" uid="uid://dtsfpyt4vxd4c" path="res://player_rb.gd" id="1_s83m0"]
+[ext_resource type="Script" uid="uid://cw3mohcrsvvyw" path="res://playerCamera.gd" id="1_ssdac"]
+[ext_resource type="Script" uid="uid://dm6hctn6syplk" path="res://cursor.gd" id="2_w643a"]
+[ext_resource type="Script" uid="uid://dqv2smrhlar5b" path="res://player.gd" id="2_wd0p1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w643a"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctg5o"]
+size = Vector2(50, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpdvb"]
+size = Vector2(1600, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w643a"]
+
+[sub_resource type="Curve" id="Curve_w643a"]
+_limits = [0.0, 1.25, 0.0, 3000.0]
+_data = [Vector2(0, 1.25), 0.0, 0.0, 0, 0, Vector2(1060.42, 1.05337), -0.00047722, -0.00047722, 0, 0, Vector2(3000, 0.333), -4.37424e-05, 0.0, 0, 0]
+point_count = 3
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(501, 518)
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 20
+script = ExtResource("1_s83m0")
+renderGizmos = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+z_index = -1
+shape = SubResource("RectangleShape2D_w643a")
+
+[node name="player" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
+process_mode = 4
+position = Vector2(494, 526)
+script = ExtResource("2_wd0p1")
+renderGizmos = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+z_index = -1
+shape = SubResource("RectangleShape2D_w643a")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+visible = false
+scale = Vector2(0.390625, 0.390625)
+texture = ExtResource("1_rb47o")
+
+[node name="cursor" type="Node2D" parent="player"]
+position = Vector2(-118, -44)
+script = ExtResource("2_w643a")
+sensitivity = 2.25
+
+[node name="Sprite2D" type="Sprite2D" parent="player/cursor"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_rb47o")
+
+[node name="env" type="Node2D" parent="."]
+
+[node name="CharacterBody2D4" type="CharacterBody2D" parent="env"]
+position = Vector2(609, 475)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/CharacterBody2D4"]
+position = Vector2(0, 50)
+shape = SubResource("RectangleShape2D_ctg5o")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="env"]
+position = Vector2(-25539, 664)
+scale = Vector2(36.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D"]
+shape = SubResource("RectangleShape2D_vpdvb")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="env"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="env/StaticBody2D2"]
+material = SubResource("ShaderMaterial_w643a")
+polygon = PackedVector2Array(0, 0, 0, 100, 300, 100, 300, 700, 400, 700, 400, 0)
+
+[node name="playerCam" type="Camera2D" parent="." node_paths=PackedStringArray("target", "cursor")]
+unique_name_in_owner = true
+position = Vector2(494, 526)
+script = ExtResource("1_ssdac")
+target = NodePath("../player")
+cursor = NodePath("../player/cursor")
+boundaryPadding = Vector2(100, 100)
+targetZone = Vector2(50, 400)
+lookahead = Vector2(0.2, 0.2)
+cursorInfluence = Vector2(0.15, 0.15)
+groundedOffset = Vector2(0, -50)
+zoomOverVelocity = SubResource("Curve_w643a")
+smoothK = 0.25
+smoothT = 0.02
+lookaheadSmoothK = 0.25
+lookaheadSmoothT = 0.1
+dzSmoothK = 0.25
+dzSmoothT = 0.2
+cursorSmoothK = 0.25
+cursorSmoothT = 0.05
+zoomSmoothK = 0.1
+zoomSmoothT = 0.05
+
+[node name="cameratarget4" type="Sprite2D" parent="playerCam"]
+visible = false
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_rb47o")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="debugText" type="RichTextLabel" parent="HUD"]
+offset_left = 37.0
+offset_top = 31.0
+offset_right = 1034.0
+offset_bottom = 721.0
+text = "sdfdsakjfajkhdgf"

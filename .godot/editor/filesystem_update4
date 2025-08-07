@@ -1,4 +1,3 @@
 res://test_0.tscn
-res://playerCamera.gd
-res://cursor.gd
-res://player.gd
+res://player_script.gdshader
+res://player.tres

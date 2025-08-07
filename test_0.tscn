@@ -1,109 +1,193 @@
-[gd_scene load_steps=8 format=3 uid="uid://itmhr03x6ife"]
+[gd_scene load_steps=22 format=3 uid="uid://itmhr03x6ife"]
 
+[ext_resource type="Texture2D" uid="uid://dd722ob6qj381" path="res://gridTileable50px.png" id="1_n3aqa"]
 [ext_resource type="Texture2D" uid="uid://cdkyy13mhy0s3" path="res://icon.svg" id="1_rb47o"]
 [ext_resource type="Script" uid="uid://cw3mohcrsvvyw" path="res://playerCamera.gd" id="1_ssdac"]
 [ext_resource type="Script" uid="uid://dm6hctn6syplk" path="res://cursor.gd" id="2_w643a"]
 [ext_resource type="Script" uid="uid://dqv2smrhlar5b" path="res://player.gd" id="2_wd0p1"]
+[ext_resource type="Script" uid="uid://bylm75obf7xxf" path="res://player_rigidbody.gd" id="3_7cyuo"]
+[ext_resource type="Shader" uid="uid://di7ucnvdkup4h" path="res://player_script.gdshader" id="3_n3aqa"]
+[ext_resource type="Texture2D" uid="uid://cfcsri4kxpn3" path="res://whiteSquare50px.png" id="3_u0ax2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctg5o"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cyuo"]
+size = Vector2(50, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0ax2"]
 size = Vector2(50, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpdvb"]
 size = Vector2(1600, 128)
 
-[sub_resource type="Curve" id="Curve_w643a"]
-_limits = [0.0, 1.25, 0.0, 3000.0]
-_data = [Vector2(0, 1.25), 0.0, 0.0, 0, 0, Vector2(1133.61, 1.03987), -0.00047722, -0.00047722, 0, 0, Vector2(3000, 0.333), -4.37424e-05, 0.0, 0, 0]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w643a"]
+
+[sub_resource type="Curve" id="Curve_u0ax2"]
+_limits = [1.0, 2.0, 0.0, 4000.0]
+_data = [Vector2(0, 1), 0.0, 0.00025, 0, 1, Vector2(4000, 2), 0.00025, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_n3aqa"]
+_limits = [-1.0, 1.0, -3000.0, 3000.0]
+_data = [Vector2(-3000, -1), 0.0, 0.000333333, 0, 1, Vector2(3000, 1), 0.000333333, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_yw7rf"]
+_limits = [0.0, 0.25, 0.0, 415.0]
+_data = [Vector2(0, 0), 0.0, 0.00060241, 0, 1, Vector2(415, 0.25), 0.00060241, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ejex7"]
+_limits = [0.0, 0.75, 0.0, 500.0]
+_data = [Vector2(0, 0), 0.0, 0.0015, 0, 1, Vector2(500, 0.75), 0.0015, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w643a"]
+size = Vector2(50, 50)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0ax2"]
+shader = ExtResource("3_n3aqa")
+shader_parameter/squishDir = Vector2(1, 0)
+shader_parameter/squishRatio = 1.0
+shader_parameter/squishPivot = Vector2(0, 0)
+shader_parameter/holePos = Vector2(0, 0)
+shader_parameter/holeSize = 3.0
+shader_parameter/shearPivot = Vector2(0, 0)
+shader_parameter/shearAmts = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s83m0"]
+size = Vector2(51, 51)
+
+[sub_resource type="Curve" id="Curve_7cyuo"]
+_limits = [0.0, 3.0, 0.0, 3000.0]
+_data = [Vector2(642.398, 0.75), 0.0, -5.6109e-05, 0, 0, Vector2(1307.28, 1.52329), 0.000943076, 0.000943076, 0, 0, Vector2(3000, 2.5), 2.99203e-05, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="Curve" id="Curve_s83m0"]
+_limits = [-1.0, 1.25, 0.0, 1000.0]
+_data = [Vector2(0, 0), 0.0, 0.00025, 0, 1, Vector2(1000, 0.25), 0.00025, 0.0, 1, 0]
+point_count = 2
 
 [node name="Node2D" type="Node2D"]
 
-[node name="player" type="CharacterBody2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(494, 526)
+[node name="env" type="Node2D" parent="."]
+
+[node name="Parallax2D2" type="Parallax2D" parent="env"]
+scroll_scale = Vector2(0.5, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="env/Parallax2D2"]
+modulate = Color(0.27, 0.27, 0.27, 1)
+texture_filter = 1
+texture_repeat = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29545.0
+offset_top = -19514.0
+offset_right = -19545.0
+offset_bottom = -9514.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8, 8)
+texture = ExtResource("1_n3aqa")
+stretch_mode = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="env"]
+
+[node name="TextureRect" type="TextureRect" parent="env/Parallax2D"]
+modulate = Color(0.42, 0.42, 0.42, 1)
+texture_filter = 1
+texture_repeat = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29545.0
+offset_top = -19514.0
+offset_right = -19545.0
+offset_bottom = -9514.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("1_n3aqa")
+stretch_mode = 1
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="env"]
+position = Vector2(609, 525)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D3"]
+shape = SubResource("RectangleShape2D_7cyuo")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="env"]
+position = Vector2(208, 530)
+scale = Vector2(1, 5.74)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D5"]
+shape = SubResource("RectangleShape2D_7cyuo")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="env"]
+position = Vector2(609, 525)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D4"]
+position = Vector2(180, -229)
+shape = SubResource("RectangleShape2D_u0ax2")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="env"]
+position = Vector2(-25539, 664)
+scale = Vector2(36.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D"]
+shape = SubResource("RectangleShape2D_vpdvb")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="env"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="env/StaticBody2D2"]
+material = SubResource("ShaderMaterial_w643a")
+polygon = PackedVector2Array(2000, 100, 2000, 0, 300, 0, 300, 700, 400, 700, 400, 100)
+
+[node name="player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("cursor")]
+position = Vector2(485, 442)
+collision_layer = 0
 script = ExtResource("2_wd0p1")
+cursor = NodePath("cursor")
+squishOverVelocity = SubResource("Curve_u0ax2")
+skewOverVelocityX = SubResource("Curve_n3aqa")
+skewOverVelocityY = SubResource("Curve_yw7rf")
+holePosOverCursorPos = SubResource("Curve_ejex7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-shape = SubResource("RectangleShape2D_ctg5o")
+visible = false
+z_index = -1
+shape = SubResource("RectangleShape2D_w643a")
 
 [node name="Sprite2D" type="Sprite2D" parent="player"]
-scale = Vector2(0.390625, 0.390625)
-texture = ExtResource("1_rb47o")
+texture_filter = 1
+material = SubResource("ShaderMaterial_u0ax2")
+texture = ExtResource("3_u0ax2")
+
+[node name="rb" type="RigidBody2D" parent="player"]
+visible = false
+collision_layer = 0
+can_sleep = false
+freeze = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 20
+script = ExtResource("3_7cyuo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/rb"]
+z_index = -1
+shape = SubResource("RectangleShape2D_s83m0")
 
 [node name="cursor" type="Node2D" parent="player"]
-position = Vector2(-118, -44)
+position = Vector2(-102, 32)
 script = ExtResource("2_w643a")
 sensitivity = 2.25
 
 [node name="Sprite2D" type="Sprite2D" parent="player/cursor"]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_rb47o")
-
-[node name="env" type="Node2D" parent="."]
-
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="env"]
-position = Vector2(609, 575)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="env/CharacterBody2D2"]
-shape = SubResource("RectangleShape2D_ctg5o")
-
-[node name="Sprite2D" type="Sprite2D" parent="env/CharacterBody2D2"]
-scale = Vector2(0.390625, 0.390625)
-texture = ExtResource("1_rb47o")
-
-[node name="CharacterBody2D3" type="CharacterBody2D" parent="env"]
-position = Vector2(609, 525)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="env/CharacterBody2D3"]
-shape = SubResource("RectangleShape2D_ctg5o")
-
-[node name="Sprite2D" type="Sprite2D" parent="env/CharacterBody2D3"]
-scale = Vector2(0.390625, 0.390625)
-texture = ExtResource("1_rb47o")
-
-[node name="CharacterBody2D4" type="CharacterBody2D" parent="env"]
-position = Vector2(609, 475)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="env/CharacterBody2D4"]
-shape = SubResource("RectangleShape2D_ctg5o")
-
-[node name="Sprite2D" type="Sprite2D" parent="env/CharacterBody2D4"]
-scale = Vector2(0.390625, 0.390625)
-texture = ExtResource("1_rb47o")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="env"]
-position = Vector2(-25539, 664)
-scale = Vector2(36.2, 1)
-
-[node name="Icon" type="Sprite2D" parent="env/StaticBody2D"]
-scale = Vector2(12.5, 1)
-texture = ExtResource("1_rb47o")
-region_rect = Rect2(0, 0, 126, 127)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D"]
-shape = SubResource("RectangleShape2D_vpdvb")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="env"]
-position = Vector2(-34, 335)
-scale = Vector2(-0.0763358, 7.1375)
-
-[node name="Icon" type="Sprite2D" parent="env/StaticBody2D2"]
-scale = Vector2(12.5, 1)
-texture = ExtResource("1_rb47o")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D2"]
-shape = SubResource("RectangleShape2D_vpdvb")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="env"]
-position = Vector2(-478, -48)
-scale = Vector2(-0.547095, 1.05621)
-
-[node name="Icon" type="Sprite2D" parent="env/StaticBody2D3"]
-scale = Vector2(12.5, 1)
-texture = ExtResource("1_rb47o")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D3"]
-shape = SubResource("RectangleShape2D_vpdvb")
 
 [node name="playerCam" type="Camera2D" parent="." node_paths=PackedStringArray("target", "cursor")]
 unique_name_in_owner = true
@@ -112,19 +196,20 @@ script = ExtResource("1_ssdac")
 target = NodePath("../player")
 cursor = NodePath("../player/cursor")
 boundaryPadding = Vector2(100, 100)
-targetZone = Vector2(100, 300)
-lookahead = Vector2(0.3, 0.3)
-cursorInfluence = Vector2(0.1, 0.1)
+targetZone = Vector2(50, 400)
+lookahead = Vector2(0.2, 0.2)
+cursorInfluence = Vector2(0.3, 0.3)
 groundedOffset = Vector2(0, -50)
-zoomOverVelocity = SubResource("Curve_w643a")
+fovOverVelocity = SubResource("Curve_7cyuo")
+fovOverCursorDist = SubResource("Curve_s83m0")
 smoothK = 0.25
-smoothT = 0.05
+smoothT = 0.02
 lookaheadSmoothK = 0.25
 lookaheadSmoothT = 0.1
 dzSmoothK = 0.25
 dzSmoothT = 0.2
 cursorSmoothK = 0.25
-cursorSmoothT = 0.02
+cursorSmoothT = 0.05
 zoomSmoothK = 0.1
 zoomSmoothT = 0.1
 
@@ -141,5 +226,5 @@ unique_name_in_owner = true
 offset_left = 37.0
 offset_top = 31.0
 offset_right = 1034.0
-offset_bottom = 111.0
+offset_bottom = 721.0
 text = "sdfdsakjfajkhdgf"

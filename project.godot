@@ -21,6 +21,7 @@ GLOBAL="*res://!GLOBAL.gd"
 
 [display]
 
+window/size/mode=2
 window/vsync/vsync_mode=3
 
 [editor]
@@ -66,7 +67,3 @@ d={
 
 common/physics_jitter_fix=0.0
 common/physics_interpolation=true
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"

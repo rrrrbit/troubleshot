@@ -13,7 +13,8 @@ extends Camera2D
 @export var cursorInfluence: Vector2
 @export var groundedOffset: Vector2
 @export_category("zoom")
-@export var zoomOverVelocity : Curve
+@export var fovOverVelocity : Curve
+@export var fovOverCursorDist : Curve
 @export_category("smoothing")
 @export var smoothK : float
 @export var smoothT : float
@@ -42,11 +43,11 @@ func _ready():
 
 func _physics_process(delta):
 	zoomScalar =  GLOBAL.lerpd(zoomScalar,
-	zoomOverVelocity.sample(target.velocity.length()),
+	fovOverVelocity.sample(target.velocity.length()) + fovOverCursorDist.sample((cursor.global_position - target.global_position).length()),
 	zoomSmoothK, zoomSmoothT, delta
 	) 
 	
-	zoom = Vector2.ONE * zoomScalar
+	zoom = Vector2.ONE / zoomScalar
 	
 	offsetCursor = GLOBAL.lerpd(offsetCursor,
 		(cursor.global_position - target.global_position) * cursorInfluence,
@@ -58,8 +59,8 @@ func _physics_process(delta):
 		lookaheadSmoothK, lookaheadSmoothT, delta
 		)
 		
-	targetPos = target.position + offsetLookahead + groundedOffset * (1 if target.is_on_floor() else -1 if target.ceilingcling else 0)
-
+	targetPos = target.position + offsetLookahead + groundedOffset * (1 if target.on_floor else 0)
+	
 	finalPos = GLOBAL.lerpd(finalPos,
 		finalPos + targetPos - targetPos.clamp(dzRect.position, dzRect.end),
 		dzSmoothK, dzSmoothT, delta
