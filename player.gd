@@ -230,16 +230,16 @@ func Dash(v: Vector2):
 	
 	if not hasDBounced:
 		if Input.is_action_pressed("d"):
-			#print("long dash")
+			print("long dash")
 			velocity -= (velocity - lastVel) * 0.25
 		elif velocity.dot(lastVel) < 0:
-			#print("short dash reverse stop")
+			print("short dash reverse stop")
 			velocity = v * 0.1
 		else:
-			#print("short dash")
+			print("short dash")
 			velocity = lastVel
 	else: 
-		#print("dbounce")
+		print("dbounce")
 		pass
 	
 	dashing = false

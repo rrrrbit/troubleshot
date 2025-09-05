@@ -22,7 +22,7 @@ size = Vector2(1600, 128)
 
 [sub_resource type="Curve" id="Curve_u0ax2"]
 _limits = [1.0, 2.0, 0.0, 4000.0]
-_data = [Vector2(0, 1), 0.0, 0.00025, 0, 1, Vector2(4000, 2), 0.00025, 0.0, 1, 0]
+_data = [Vector2(0, 1), 0.0, 0.0001875, 0, 1, Vector2(4000, 1.75), 0.0001875, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_n3aqa"]
@@ -183,7 +183,7 @@ shape = SubResource("RectangleShape2D_s83m0")
 [node name="cursor" type="Node2D" parent="player"]
 position = Vector2(-102, 32)
 script = ExtResource("2_w643a")
-sensitivity = 2.25
+sensitivity = 2.5
 
 [node name="Sprite2D" type="Sprite2D" parent="player/cursor"]
 scale = Vector2(0.1, 0.1)
