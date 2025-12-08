@@ -1,13 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://itmhr03x6ife"]
+[gd_scene load_steps=23 format=3 uid="uid://itmhr03x6ife"]
 
 [ext_resource type="Texture2D" uid="uid://dd722ob6qj381" path="res://gridTileable50px.png" id="1_n3aqa"]
 [ext_resource type="Texture2D" uid="uid://cdkyy13mhy0s3" path="res://icon.svg" id="1_rb47o"]
 [ext_resource type="Script" uid="uid://cw3mohcrsvvyw" path="res://playerCamera.gd" id="1_ssdac"]
-[ext_resource type="Script" uid="uid://dm6hctn6syplk" path="res://cursor.gd" id="2_w643a"]
 [ext_resource type="Script" uid="uid://dqv2smrhlar5b" path="res://player.gd" id="2_wd0p1"]
 [ext_resource type="Script" uid="uid://bylm75obf7xxf" path="res://player_rigidbody.gd" id="3_7cyuo"]
 [ext_resource type="Shader" uid="uid://di7ucnvdkup4h" path="res://player_script.gdshader" id="3_n3aqa"]
 [ext_resource type="Texture2D" uid="uid://cfcsri4kxpn3" path="res://whiteSquare50px.png" id="3_u0ax2"]
+[ext_resource type="Script" uid="uid://ddbjdhbk1sc20" path="res://cursor2.gd" id="6_n3aqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cyuo"]
 size = Vector2(50, 150)
@@ -65,6 +65,18 @@ point_count = 3
 _limits = [-1.0, 1.25, 0.0, 1000.0]
 _data = [Vector2(0, 0), 0.0, 0.00025, 0, 1, Vector2(1000, 0.25), 0.00025, 0.0, 1, 0]
 point_count = 2
+
+[sub_resource type="GDScript" id="GDScript_n3aqa"]
+resource_name = "aimLine"
+script/source = "extends Line2D
+
+@export var player : Node2D
+@export var cursor : Node2D
+func _process(delta: float) -> void:
+	set_point_position(0, player.global_position)
+	set_point_position(1, player.global_position + cursor.position)
+	pass
+"
 
 [node name="Node2D" type="Node2D"]
 
@@ -181,12 +193,12 @@ z_index = -1
 shape = SubResource("RectangleShape2D_s83m0")
 
 [node name="cursor" type="Node2D" parent="player"]
-position = Vector2(-102, 32)
-script = ExtResource("2_w643a")
-sensitivity = 2.5
+script = ExtResource("6_n3aqa")
+sensitivity2 = Vector2(500, 2.5)
+aimType = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="player/cursor"]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_rb47o")
 
 [node name="playerCam" type="Camera2D" parent="." node_paths=PackedStringArray("target", "cursor")]
@@ -228,3 +240,10 @@ offset_top = 31.0
 offset_right = 1034.0
 offset_bottom = 721.0
 text = "sdfdsakjfajkhdgf"
+
+[node name="Line2D" type="Line2D" parent="." node_paths=PackedStringArray("player", "cursor")]
+points = PackedVector2Array(0, 0, 663, 398)
+width = 2.0
+script = SubResource("GDScript_n3aqa")
+player = NodePath("../player")
+cursor = NodePath("../player/cursor")

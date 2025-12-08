@@ -1,3 +1,4 @@
+Line2D
 TextureRect
 ParallaxBackground
 ParallaxLayer
@@ -12,4 +13,3 @@ Node2D
 CanvasLayer
 ColorRect
 CanvasModulate
-Line2D
