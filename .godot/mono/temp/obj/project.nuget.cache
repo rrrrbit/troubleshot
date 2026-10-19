@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "Lqpu90akwbU=",
+  "dgSpecHash": "LliwIu1Psqk=",
   "success": true,
-  "projectFilePath": "C:\\USERS\\JONMA\\DOCUMENTS\\GITHUB\\TROUBLESHOT\\TROUBLESHOT.csproj",
+  "projectFilePath": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\TROUBLESHOT.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jonma\\.nuget\\packages\\godot.sourcegenerators\\4.7.1\\godot.sourcegenerators.4.7.1.nupkg.sha512",
     "C:\\Users\\jonma\\.nuget\\packages\\godotsharp\\4.7.1\\godotsharp.4.7.1.nupkg.sha512",
     "C:\\Users\\jonma\\.nuget\\packages\\godotsharpeditor\\4.7.1\\godotsharpeditor.4.7.1.nupkg.sha512",
-    "C:\\Users\\jonma\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.32\\microsoft.windowsdesktop.app.ref.8.0.32.nupkg.sha512",
     "C:\\Users\\jonma\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.32\\microsoft.netcore.app.ref.8.0.32.nupkg.sha512",
+    "C:\\Users\\jonma\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.32\\microsoft.windowsdesktop.app.ref.8.0.32.nupkg.sha512",
     "C:\\Users\\jonma\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.32\\microsoft.aspnetcore.app.ref.8.0.32.nupkg.sha512"
   ],
   "logs": []

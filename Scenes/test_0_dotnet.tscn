@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://cjmfij3u0dxh5"]
 
-[ext_resource type="Texture2D" uid="uid://dd722ob6qj381" path="res://gridTileable50px.png" id="1_06cwr"]
-[ext_resource type="Script" uid="uid://byx01r2wx3xyd" path="res://Scripts/C#/PlayerMvt.cs" id="2_06cwr"]
-[ext_resource type="Curve" path="res://Curves/squishOverVelocity.tres" id="3_nimpo"]
-[ext_resource type="Shader" uid="uid://di7ucnvdkup4h" path="res://player_script.gdshader" id="3_tinqm"]
-[ext_resource type="Curve" path="res://Curves/skewOverVelocityX.tres" id="4_kccbr"]
-[ext_resource type="Texture2D" uid="uid://cfcsri4kxpn3" path="res://whiteSquare50px.png" id="4_lmxgu"]
-[ext_resource type="Script" uid="uid://cnu01tvs7p3kw" path="res://Scripts/C#/PlayerRigidBody.cs" id="5_06cwr"]
-[ext_resource type="Curve" path="res://Curves/skewOverVelocityY.tres" id="5_satpx"]
-[ext_resource type="Curve" path="res://Curves/holePosOverCursorPos.tres" id="6_5an00"]
-[ext_resource type="Texture2D" uid="uid://cdkyy13mhy0s3" path="res://icon.svg" id="7_6xr05"]
-[ext_resource type="Script" uid="uid://bkvnpqnkcqd4q" path="res://Scripts/C#/Cursor2.cs" id="10_07kt2"]
-[ext_resource type="Script" uid="uid://c8twjhjglxqgt" path="res://Scripts/C#/PlayerCamera.cs" id="12_lk632"]
-[ext_resource type="Curve" path="res://Curves/fovOverVelocity.tres" id="13_0emqt"]
-[ext_resource type="Curve" path="res://Curves/fovOverCursorDist.tres" id="14_uov4k"]
-[ext_resource type="Script" uid="uid://c88lbduufenqn" path="res://Scripts/C#/AimLine.cs" id="15_rwyt8"]
+[ext_resource type="Texture2D" uid="uid://dd722ob6qj381" path="res://Assets/gridTileable50px.png" id="1_hsc22"]
+[ext_resource type="Script" uid="uid://byx01r2wx3xyd" path="res://Scripts/PlayerMvt.cs" id="2_eq7tr"]
+[ext_resource type="Curve" path="res://Curves/squishOverVelocity.tres" id="3_i0si8"]
+[ext_resource type="Curve" path="res://Curves/skewOverVelocityX.tres" id="4_27k3i"]
+[ext_resource type="Curve" path="res://Curves/skewOverVelocityY.tres" id="5_b3j0u"]
+[ext_resource type="Curve" path="res://Curves/holePosOverCursorPos.tres" id="6_imn45"]
+[ext_resource type="Shader" uid="uid://di7ucnvdkup4h" path="res://Assets/player_script.gdshader" id="7_hsc22"]
+[ext_resource type="Texture2D" uid="uid://cfcsri4kxpn3" path="res://Assets/whiteSquare50px.png" id="8_rc4di"]
+[ext_resource type="Script" uid="uid://cnu01tvs7p3kw" path="res://Scripts/PlayerRigidBody.cs" id="9_0werq"]
+[ext_resource type="Script" uid="uid://bkvnpqnkcqd4q" path="res://Scripts/Cursor2.cs" id="10_uhhbh"]
+[ext_resource type="Texture2D" uid="uid://cdkyy13mhy0s3" path="res://Assets/icon.svg" id="11_0uodd"]
+[ext_resource type="Script" uid="uid://c8twjhjglxqgt" path="res://Scripts/PlayerCamera.cs" id="12_p2ws7"]
+[ext_resource type="Curve" path="res://Curves/fovOverVelocity.tres" id="13_xnx3q"]
+[ext_resource type="Curve" path="res://Curves/fovOverCursorDist.tres" id="14_ycqdf"]
+[ext_resource type="Script" uid="uid://c88lbduufenqn" path="res://Scripts/AimLine.cs" id="15_pqwqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cyuo"]
 size = Vector2(50, 150)
@@ -31,7 +31,7 @@ size = Vector2(1600, 128)
 size = Vector2(50, 50)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u0ax2"]
-shader = ExtResource("3_tinqm")
+shader = ExtResource("7_hsc22")
 shader_parameter/squishDir = Vector2(1, 0)
 shader_parameter/squishRatio = 1.0
 shader_parameter/squishPivot = Vector2(0, 0)
@@ -66,7 +66,7 @@ offset_bottom = -9514.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(8, 8)
-texture = ExtResource("1_06cwr")
+texture = ExtResource("1_hsc22")
 stretch_mode = 1
 
 [node name="Parallax2D" type="Parallax2D" parent="env" unique_id=1532576393]
@@ -87,7 +87,7 @@ offset_bottom = -9514.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
-texture = ExtResource("1_06cwr")
+texture = ExtResource("1_hsc22")
 stretch_mode = 1
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="env" unique_id=624283391]
@@ -126,15 +126,15 @@ polygon = PackedVector2Array(2000, 100, 2000, 0, 300, 0, 300, 700, 400, 700, 400
 [node name="player" type="CharacterBody2D" parent="." unique_id=1675289399 node_paths=PackedStringArray("rb", "cursor", "sprite", "debugText")]
 position = Vector2(485, 442)
 collision_layer = 0
-script = ExtResource("2_06cwr")
+script = ExtResource("2_eq7tr")
 rb = NodePath("rb")
 cursor = NodePath("cursor")
 sprite = NodePath("Sprite2D")
 debugText = NodePath("../HUD/debugText")
-_squishOverVelocity = ExtResource("3_nimpo")
-_skewOverVelocityX = ExtResource("4_kccbr")
-_skewOverVelocityY = ExtResource("5_satpx")
-_holePosOverCursorPos = ExtResource("6_5an00")
+_squishOverVelocity = ExtResource("3_i0si8")
+_skewOverVelocityX = ExtResource("4_27k3i")
+_skewOverVelocityY = ExtResource("5_b3j0u")
+_holePosOverCursorPos = ExtResource("6_imn45")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1336062716]
 z_index = -1
@@ -143,7 +143,7 @@ shape = SubResource("RectangleShape2D_w643a")
 [node name="Sprite2D" type="Sprite2D" parent="player" unique_id=1013260069]
 texture_filter = 1
 material = SubResource("ShaderMaterial_u0ax2")
-texture = ExtResource("4_lmxgu")
+texture = ExtResource("8_rc4di")
 
 [node name="rb" type="RigidBody2D" parent="player" unique_id=2087363020]
 collision_layer = 0
@@ -152,35 +152,35 @@ freeze = true
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 20
-script = ExtResource("5_06cwr")
+script = ExtResource("9_0werq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player/rb" unique_id=1047306981]
 z_index = -1
 shape = SubResource("RectangleShape2D_s83m0")
 
 [node name="cursor" type="Node2D" parent="player" unique_id=1099790039]
-script = ExtResource("10_07kt2")
+script = ExtResource("10_uhhbh")
 _sensitivity = 0.75
 _aimType = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="player/cursor" unique_id=1258618268]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_6xr05")
+texture = ExtResource("11_0uodd")
 
 [node name="playerCam" type="Camera2D" parent="." unique_id=1442115327 node_paths=PackedStringArray("target", "cursor")]
 unique_name_in_owner = true
 position = Vector2(494, 526)
-script = ExtResource("12_lk632")
+script = ExtResource("12_p2ws7")
 target = NodePath("../player")
 cursor = NodePath("../player/cursor")
-_fovOverVelocity = ExtResource("13_0emqt")
-_fovOverCursorDist = ExtResource("14_uov4k")
+_fovOverVelocity = ExtResource("13_xnx3q")
+_fovOverCursorDist = ExtResource("14_ycqdf")
 
 [node name="cameratarget4" type="Sprite2D" parent="playerCam" unique_id=812458265]
 visible = false
 modulate = Color(0, 0, 1, 1)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("7_6xr05")
+texture = ExtResource("11_0uodd")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1925404016]
 unique_name_in_owner = true
@@ -195,6 +195,6 @@ text = "sdfdsakjfajkhdgf"
 [node name="Line2D" type="Line2D" parent="." unique_id=964822408 node_paths=PackedStringArray("player", "cursor")]
 points = PackedVector2Array(0, 0, 663, 398)
 width = 2.0
-script = ExtResource("15_rwyt8")
+script = ExtResource("15_pqwqu")
 player = NodePath("../player")
 cursor = NodePath("../player/cursor")

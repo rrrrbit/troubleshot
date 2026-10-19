@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\USERS\\JONMA\\DOCUMENTS\\GITHUB\\TROUBLESHOT\\TROUBLESHOT.csproj": {}
+    "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\TROUBLESHOT.csproj": {}
   },
   "projects": {
-    "C:\\USERS\\JONMA\\DOCUMENTS\\GITHUB\\TROUBLESHOT\\TROUBLESHOT.csproj": {
+    "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\TROUBLESHOT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\USERS\\JONMA\\DOCUMENTS\\GITHUB\\TROUBLESHOT\\TROUBLESHOT.csproj",
+        "projectUniqueName": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\TROUBLESHOT.csproj",
         "projectName": "TROUBLESHOT",
-        "projectPath": "C:\\USERS\\JONMA\\DOCUMENTS\\GITHUB\\TROUBLESHOT\\TROUBLESHOT.csproj",
+        "projectPath": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\TROUBLESHOT.csproj",
         "packagesPath": "C:\\Users\\jonma\\.nuget\\packages\\",
-        "outputPath": "C:\\USERS\\JONMA\\DOCUMENTS\\GITHUB\\TROUBLESHOT\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jonma\\AppData\\Roaming\\NuGet\\NuGet.Config",
