@@ -1,4 +1,9 @@
-res://test_0.tscn
+res://Scripts/C#/AimLine.cs
+res://Scripts/C#/PlayerCamera.cs
+res://Scripts/C#/Cursor2.cs
+res://Scripts/C#/PlayerRigidBody.cs
+res://Scripts/C#/PlayerMvt.cs
+res://test_0_dotnet.tscn
 res://player_script.gdshader
-res://cursor2.gd
-res://player_cb.tscn
+res://test_0.tscn
+res://Scripts/GDScript/player.gd

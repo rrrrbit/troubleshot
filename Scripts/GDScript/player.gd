@@ -149,7 +149,7 @@ func _physics_process(delta):
 	
 	#region input-dependent logic
 	#region 	dash logic
-	if Input.is_action_just_pressed("d") and not direction.is_zero_approx():
+	if Input.is_action_just_pressed("dash") and not direction.is_zero_approx():
 		velocity.y=0
 		Dash(get_dash_vec() * DASH_VEL)
 	#endregion

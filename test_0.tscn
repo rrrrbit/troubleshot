@@ -1,13 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://itmhr03x6ife"]
+[gd_scene format=3 uid="uid://itmhr03x6ife"]
 
 [ext_resource type="Texture2D" uid="uid://dd722ob6qj381" path="res://gridTileable50px.png" id="1_n3aqa"]
 [ext_resource type="Texture2D" uid="uid://cdkyy13mhy0s3" path="res://icon.svg" id="1_rb47o"]
-[ext_resource type="Script" uid="uid://cw3mohcrsvvyw" path="res://playerCamera.gd" id="1_ssdac"]
-[ext_resource type="Script" uid="uid://dqv2smrhlar5b" path="res://player.gd" id="2_wd0p1"]
-[ext_resource type="Script" uid="uid://bylm75obf7xxf" path="res://player_rigidbody.gd" id="3_7cyuo"]
+[ext_resource type="Script" uid="uid://cw3mohcrsvvyw" path="res://Scripts/GDScript/playerCamera.gd" id="1_ssdac"]
+[ext_resource type="Script" uid="uid://dqv2smrhlar5b" path="res://Scripts/GDScript/player.gd" id="2_wd0p1"]
+[ext_resource type="Script" uid="uid://bylm75obf7xxf" path="res://Scripts/GDScript/player_rigidbody.gd" id="3_7cyuo"]
 [ext_resource type="Shader" uid="uid://di7ucnvdkup4h" path="res://player_script.gdshader" id="3_n3aqa"]
 [ext_resource type="Texture2D" uid="uid://cfcsri4kxpn3" path="res://whiteSquare50px.png" id="3_u0ax2"]
-[ext_resource type="Script" uid="uid://ddbjdhbk1sc20" path="res://cursor2.gd" id="6_n3aqa"]
+[ext_resource type="Script" uid="uid://ddbjdhbk1sc20" path="res://Scripts/GDScript/cursor2.gd" id="6_n3aqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cyuo"]
 size = Vector2(50, 150)
@@ -78,14 +78,14 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=2098393506]
 
-[node name="env" type="Node2D" parent="."]
+[node name="env" type="Node2D" parent="." unique_id=1680195425]
 
-[node name="Parallax2D2" type="Parallax2D" parent="env"]
+[node name="Parallax2D2" type="Parallax2D" parent="env" unique_id=2041960294]
 scroll_scale = Vector2(0.5, 0.5)
 
-[node name="TextureRect" type="TextureRect" parent="env/Parallax2D2"]
+[node name="TextureRect" type="TextureRect" parent="env/Parallax2D2" unique_id=1543454330]
 modulate = Color(0.27, 0.27, 0.27, 1)
 texture_filter = 1
 texture_repeat = 2
@@ -104,9 +104,9 @@ scale = Vector2(8, 8)
 texture = ExtResource("1_n3aqa")
 stretch_mode = 1
 
-[node name="Parallax2D" type="Parallax2D" parent="env"]
+[node name="Parallax2D" type="Parallax2D" parent="env" unique_id=359115627]
 
-[node name="TextureRect" type="TextureRect" parent="env/Parallax2D"]
+[node name="TextureRect" type="TextureRect" parent="env/Parallax2D" unique_id=1746472128]
 modulate = Color(0.42, 0.42, 0.42, 1)
 texture_filter = 1
 texture_repeat = 2
@@ -125,40 +125,40 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_n3aqa")
 stretch_mode = 1
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="env"]
+[node name="StaticBody2D3" type="StaticBody2D" parent="env" unique_id=2126064206]
 position = Vector2(609, 525)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D3" unique_id=1403241127]
 shape = SubResource("RectangleShape2D_7cyuo")
 
-[node name="StaticBody2D5" type="StaticBody2D" parent="env"]
+[node name="StaticBody2D5" type="StaticBody2D" parent="env" unique_id=1006567497]
 position = Vector2(208, 530)
 scale = Vector2(1, 5.74)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D5" unique_id=341794220]
 shape = SubResource("RectangleShape2D_7cyuo")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="env"]
+[node name="StaticBody2D4" type="StaticBody2D" parent="env" unique_id=1714053950]
 position = Vector2(609, 525)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D4" unique_id=1328184508]
 position = Vector2(180, -229)
 shape = SubResource("RectangleShape2D_u0ax2")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="env"]
+[node name="StaticBody2D" type="StaticBody2D" parent="env" unique_id=564265312]
 position = Vector2(-25539, 664)
 scale = Vector2(36.2, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D" unique_id=2126696461]
 shape = SubResource("RectangleShape2D_vpdvb")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="env"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="env" unique_id=289002570]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="env/StaticBody2D2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="env/StaticBody2D2" unique_id=817289293]
 material = SubResource("ShaderMaterial_w643a")
 polygon = PackedVector2Array(2000, 100, 2000, 0, 300, 0, 300, 700, 400, 700, 400, 100)
 
-[node name="player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("cursor")]
+[node name="player" type="CharacterBody2D" parent="." unique_id=1831304032 node_paths=PackedStringArray("cursor")]
 position = Vector2(485, 442)
 collision_layer = 0
 script = ExtResource("2_wd0p1")
@@ -168,17 +168,17 @@ skewOverVelocityX = SubResource("Curve_n3aqa")
 skewOverVelocityY = SubResource("Curve_yw7rf")
 holePosOverCursorPos = SubResource("Curve_ejex7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=682799718]
 visible = false
 z_index = -1
 shape = SubResource("RectangleShape2D_w643a")
 
-[node name="Sprite2D" type="Sprite2D" parent="player"]
+[node name="Sprite2D" type="Sprite2D" parent="player" unique_id=1766456965]
 texture_filter = 1
 material = SubResource("ShaderMaterial_u0ax2")
 texture = ExtResource("3_u0ax2")
 
-[node name="rb" type="RigidBody2D" parent="player"]
+[node name="rb" type="RigidBody2D" parent="player" unique_id=745426916]
 visible = false
 collision_layer = 0
 can_sleep = false
@@ -188,20 +188,19 @@ contact_monitor = true
 max_contacts_reported = 20
 script = ExtResource("3_7cyuo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player/rb"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/rb" unique_id=871799561]
 z_index = -1
 shape = SubResource("RectangleShape2D_s83m0")
 
-[node name="cursor" type="Node2D" parent="player"]
+[node name="cursor" type="Node2D" parent="player" unique_id=1563747565]
 script = ExtResource("6_n3aqa")
 sensitivity2 = Vector2(500, 2.5)
-aimType = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="player/cursor"]
+[node name="Sprite2D" type="Sprite2D" parent="player/cursor" unique_id=1656468123]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_rb47o")
 
-[node name="playerCam" type="Camera2D" parent="." node_paths=PackedStringArray("target", "cursor")]
+[node name="playerCam" type="Camera2D" parent="." unique_id=418631451 node_paths=PackedStringArray("target", "cursor")]
 unique_name_in_owner = true
 position = Vector2(494, 526)
 script = ExtResource("1_ssdac")
@@ -225,25 +224,26 @@ cursorSmoothT = 0.05
 zoomSmoothK = 0.1
 zoomSmoothT = 0.1
 
-[node name="cameratarget4" type="Sprite2D" parent="playerCam"]
+[node name="cameratarget4" type="Sprite2D" parent="playerCam" unique_id=147379262]
 visible = false
 modulate = Color(0, 0, 1, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_rb47o")
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1331766978]
 unique_name_in_owner = true
 
-[node name="debugText" type="RichTextLabel" parent="HUD"]
+[node name="debugText" type="RichTextLabel" parent="HUD" unique_id=1083191546]
 offset_left = 37.0
 offset_top = 31.0
 offset_right = 1034.0
 offset_bottom = 721.0
 text = "sdfdsakjfajkhdgf"
 
-[node name="Line2D" type="Line2D" parent="." node_paths=PackedStringArray("player", "cursor")]
+[node name="Line2D" type="Line2D" parent="." unique_id=1560380902 node_paths=PackedStringArray("player", "cursor")]
 points = PackedVector2Array(0, 0, 663, 398)
 width = 2.0
+default_color = Color(1, 0, 0, 1)
 script = SubResource("GDScript_n3aqa")
 player = NodePath("../player")
 cursor = NodePath("../player/cursor")

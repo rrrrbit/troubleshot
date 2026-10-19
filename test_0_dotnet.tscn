@@ -1,0 +1,200 @@
+[gd_scene format=3 uid="uid://cjmfij3u0dxh5"]
+
+[ext_resource type="Texture2D" uid="uid://dd722ob6qj381" path="res://gridTileable50px.png" id="1_06cwr"]
+[ext_resource type="Script" uid="uid://byx01r2wx3xyd" path="res://Scripts/C#/PlayerMvt.cs" id="2_06cwr"]
+[ext_resource type="Curve" path="res://Curves/squishOverVelocity.tres" id="3_nimpo"]
+[ext_resource type="Shader" uid="uid://di7ucnvdkup4h" path="res://player_script.gdshader" id="3_tinqm"]
+[ext_resource type="Curve" path="res://Curves/skewOverVelocityX.tres" id="4_kccbr"]
+[ext_resource type="Texture2D" uid="uid://cfcsri4kxpn3" path="res://whiteSquare50px.png" id="4_lmxgu"]
+[ext_resource type="Script" uid="uid://cnu01tvs7p3kw" path="res://Scripts/C#/PlayerRigidBody.cs" id="5_06cwr"]
+[ext_resource type="Curve" path="res://Curves/skewOverVelocityY.tres" id="5_satpx"]
+[ext_resource type="Curve" path="res://Curves/holePosOverCursorPos.tres" id="6_5an00"]
+[ext_resource type="Texture2D" uid="uid://cdkyy13mhy0s3" path="res://icon.svg" id="7_6xr05"]
+[ext_resource type="Script" uid="uid://bkvnpqnkcqd4q" path="res://Scripts/C#/Cursor2.cs" id="10_07kt2"]
+[ext_resource type="Script" uid="uid://c8twjhjglxqgt" path="res://Scripts/C#/PlayerCamera.cs" id="12_lk632"]
+[ext_resource type="Curve" path="res://Curves/fovOverVelocity.tres" id="13_0emqt"]
+[ext_resource type="Curve" path="res://Curves/fovOverCursorDist.tres" id="14_uov4k"]
+[ext_resource type="Script" uid="uid://c88lbduufenqn" path="res://Scripts/C#/AimLine.cs" id="15_rwyt8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cyuo"]
+size = Vector2(50, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0ax2"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpdvb"]
+size = Vector2(1600, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w643a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w643a"]
+size = Vector2(50, 50)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0ax2"]
+shader = ExtResource("3_tinqm")
+shader_parameter/squishDir = Vector2(1, 0)
+shader_parameter/squishRatio = 1.0
+shader_parameter/squishPivot = Vector2(0, 0)
+shader_parameter/holePos = Vector2(0, 0)
+shader_parameter/holeSize = 3.0
+shader_parameter/shearPivot = Vector2(0, 0)
+shader_parameter/shearAmts = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s83m0"]
+size = Vector2(51, 51)
+
+[node name="Node2D" type="Node2D" unique_id=1403298011]
+
+[node name="env" type="Node2D" parent="." unique_id=1464524057]
+
+[node name="Parallax2D2" type="Parallax2D" parent="env" unique_id=1632680839]
+scroll_scale = Vector2(0.5, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="env/Parallax2D2" unique_id=831607250]
+modulate = Color(0.27, 0.27, 0.27, 1)
+texture_filter = 1
+texture_repeat = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29545.0
+offset_top = -19514.0
+offset_right = -19545.0
+offset_bottom = -9514.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8, 8)
+texture = ExtResource("1_06cwr")
+stretch_mode = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="env" unique_id=1532576393]
+
+[node name="TextureRect" type="TextureRect" parent="env/Parallax2D" unique_id=658772117]
+modulate = Color(0.42, 0.42, 0.42, 1)
+texture_filter = 1
+texture_repeat = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29545.0
+offset_top = -19514.0
+offset_right = -19545.0
+offset_bottom = -9514.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("1_06cwr")
+stretch_mode = 1
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="env" unique_id=624283391]
+position = Vector2(609, 525)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D3" unique_id=162226783]
+shape = SubResource("RectangleShape2D_7cyuo")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="env" unique_id=752028467]
+position = Vector2(208, 530)
+scale = Vector2(1, 5.74)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D5" unique_id=65447550]
+shape = SubResource("RectangleShape2D_7cyuo")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="env" unique_id=1608043601]
+position = Vector2(609, 525)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D4" unique_id=1444872005]
+position = Vector2(180, -229)
+shape = SubResource("RectangleShape2D_u0ax2")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="env" unique_id=743060550]
+position = Vector2(-25539, 664)
+scale = Vector2(36.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/StaticBody2D" unique_id=1293736981]
+shape = SubResource("RectangleShape2D_vpdvb")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="env" unique_id=341658680]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="env/StaticBody2D2" unique_id=1177425768]
+material = SubResource("ShaderMaterial_w643a")
+polygon = PackedVector2Array(2000, 100, 2000, 0, 300, 0, 300, 700, 400, 700, 400, 100)
+
+[node name="player" type="CharacterBody2D" parent="." unique_id=1675289399 node_paths=PackedStringArray("rb", "cursor", "sprite", "debugText")]
+position = Vector2(485, 442)
+collision_layer = 0
+script = ExtResource("2_06cwr")
+rb = NodePath("rb")
+cursor = NodePath("cursor")
+sprite = NodePath("Sprite2D")
+debugText = NodePath("../HUD/debugText")
+_squishOverVelocity = ExtResource("3_nimpo")
+_skewOverVelocityX = ExtResource("4_kccbr")
+_skewOverVelocityY = ExtResource("5_satpx")
+_holePosOverCursorPos = ExtResource("6_5an00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1336062716]
+z_index = -1
+shape = SubResource("RectangleShape2D_w643a")
+
+[node name="Sprite2D" type="Sprite2D" parent="player" unique_id=1013260069]
+texture_filter = 1
+material = SubResource("ShaderMaterial_u0ax2")
+texture = ExtResource("4_lmxgu")
+
+[node name="rb" type="RigidBody2D" parent="player" unique_id=2087363020]
+collision_layer = 0
+can_sleep = false
+freeze = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 20
+script = ExtResource("5_06cwr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/rb" unique_id=1047306981]
+z_index = -1
+shape = SubResource("RectangleShape2D_s83m0")
+
+[node name="cursor" type="Node2D" parent="player" unique_id=1099790039]
+script = ExtResource("10_07kt2")
+_sensitivity = 0.75
+_aimType = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="player/cursor" unique_id=1258618268]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_6xr05")
+
+[node name="playerCam" type="Camera2D" parent="." unique_id=1442115327 node_paths=PackedStringArray("target", "cursor")]
+unique_name_in_owner = true
+position = Vector2(494, 526)
+script = ExtResource("12_lk632")
+target = NodePath("../player")
+cursor = NodePath("../player/cursor")
+_fovOverVelocity = ExtResource("13_0emqt")
+_fovOverCursorDist = ExtResource("14_uov4k")
+
+[node name="cameratarget4" type="Sprite2D" parent="playerCam" unique_id=812458265]
+visible = false
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_6xr05")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1925404016]
+unique_name_in_owner = true
+
+[node name="debugText" type="RichTextLabel" parent="HUD" unique_id=2079307229]
+offset_left = 37.0
+offset_top = 31.0
+offset_right = 1034.0
+offset_bottom = 721.0
+text = "sdfdsakjfajkhdgf"
+
+[node name="Line2D" type="Line2D" parent="." unique_id=964822408 node_paths=PackedStringArray("player", "cursor")]
+points = PackedVector2Array(0, 0, 663, 398)
+width = 2.0
+script = ExtResource("15_rwyt8")
+player = NodePath("../player")
+cursor = NodePath("../player/cursor")
