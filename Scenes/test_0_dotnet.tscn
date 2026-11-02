@@ -6,6 +6,7 @@
 [ext_resource type="Curve" path="res://Curves/skewOverVelocityX.tres" id="4_27k3i"]
 [ext_resource type="Curve" path="res://Curves/skewOverVelocityY.tres" id="5_b3j0u"]
 [ext_resource type="Curve" path="res://Curves/holePosOverCursorPos.tres" id="6_imn45"]
+[ext_resource type="Script" uid="uid://ib1ue08h2gpx" path="res://Scripts/Health.cs" id="7_eq7tr"]
 [ext_resource type="Shader" uid="uid://di7ucnvdkup4h" path="res://Assets/player_script.gdshader" id="7_hsc22"]
 [ext_resource type="Texture2D" uid="uid://cfcsri4kxpn3" path="res://Assets/whiteSquare50px.png" id="8_rc4di"]
 [ext_resource type="Script" uid="uid://cnu01tvs7p3kw" path="res://Scripts/PlayerRigidBody.cs" id="9_0werq"]
@@ -131,10 +132,15 @@ rb = NodePath("rb")
 cursor = NodePath("cursor")
 sprite = NodePath("Sprite2D")
 debugText = NodePath("../HUD/debugText")
+_ACCEL = 5000.0
 _squishOverVelocity = ExtResource("3_i0si8")
 _skewOverVelocityX = ExtResource("4_27k3i")
 _skewOverVelocityY = ExtResource("5_b3j0u")
 _holePosOverCursorPos = ExtResource("6_imn45")
+
+[node name="Health" type="Node" parent="player" unique_id=1319097934]
+script = ExtResource("7_eq7tr")
+metadata/_custom_type_script = "uid://ib1ue08h2gpx"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1336062716]
 z_index = -1

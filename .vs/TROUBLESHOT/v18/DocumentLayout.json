@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B92A81FA-21D6-4692-9261-E700072BBDBD}|TROUBLESHOT.csproj|c:\\users\\jonma\\documents\\github\\troubleshot\\scripts\\c#\\global.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B92A81FA-21D6-4692-9261-E700072BBDBD}|TROUBLESHOT.csproj|solutionrelative:scripts\\c#\\global.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B92A81FA-21D6-4692-9261-E700072BBDBD}|TROUBLESHOT.csproj|c:\\users\\jonma\\documents\\github\\troubleshot\\scripts\\global.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B92A81FA-21D6-4692-9261-E700072BBDBD}|TROUBLESHOT.csproj|solutionrelative:scripts\\global.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B92A81FA-21D6-4692-9261-E700072BBDBD}|TROUBLESHOT.csproj|c:\\users\\jonma\\documents\\github\\troubleshot\\scripts\\c#\\aimline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B92A81FA-21D6-4692-9261-E700072BBDBD}|TROUBLESHOT.csproj|solutionrelative:scripts\\c#\\aimline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B92A81FA-21D6-4692-9261-E700072BBDBD}|TROUBLESHOT.csproj|c:\\users\\jonma\\documents\\github\\troubleshot\\scripts\\c#\\playercamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B92A81FA-21D6-4692-9261-E700072BBDBD}|TROUBLESHOT.csproj|solutionrelative:scripts\\c#\\playercamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\Scripts\\C#\\AimLine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\C#\\AimLine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\PlayerRigidBody.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PlayerRigidBody.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B92A81FA-21D6-4692-9261-E700072BBDBD}|TROUBLESHOT.csproj|c:\\users\\jonma\\documents\\github\\troubleshot\\scripts\\c#\\playermvt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B92A81FA-21D6-4692-9261-E700072BBDBD}|TROUBLESHOT.csproj|solutionrelative:scripts\\c#\\playermvt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\Scripts\\C#\\PlayerCamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\C#\\PlayerCamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\Scripts\\C#\\PlayerMvt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\C#\\PlayerMvt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,18 +36,29 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "GLOBAL.cs",
-              "DocumentMoniker": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\Scripts\\C#\\GLOBAL.cs",
-              "RelativeDocumentMoniker": "Scripts\\C#\\GLOBAL.cs",
-              "ToolTip": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\Scripts\\C#\\GLOBAL.cs",
-              "RelativeToolTip": "Scripts\\C#\\GLOBAL.cs",
+              "DocumentMoniker": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\Scripts\\GLOBAL.cs",
+              "RelativeDocumentMoniker": "Scripts\\GLOBAL.cs",
+              "ToolTip": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\Scripts\\GLOBAL.cs",
+              "RelativeToolTip": "Scripts\\GLOBAL.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-17T15:37:56.285Z",
+              "WhenOpened": "2026-10-28T14:26:22.362Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "PlayerRigidBody.cs",
+              "DocumentMoniker": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\PlayerRigidBody.cs",
+              "RelativeDocumentMoniker": "PlayerRigidBody.cs",
+              "ToolTip": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\PlayerRigidBody.cs",
+              "RelativeToolTip": "PlayerRigidBody.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-02T22:17:40.907Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "PlayerCamera.cs",
               "DocumentMoniker": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\Scripts\\C#\\PlayerCamera.cs",
               "RelativeDocumentMoniker": "Scripts\\C#\\PlayerCamera.cs",
@@ -65,10 +76,8 @@
               "RelativeDocumentMoniker": "Scripts\\C#\\AimLine.cs",
               "ToolTip": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\Scripts\\C#\\AimLine.cs",
               "RelativeToolTip": "Scripts\\C#\\AimLine.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-17T15:32:17.436Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-17T15:32:17.436Z"
             },
             {
               "$type": "Document",
@@ -81,17 +90,6 @@
               "ViewState": "AgIAADUAAAAAAAAAAADwvycAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-02T22:51:38.731Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PlayerRigidBody.cs",
-              "DocumentMoniker": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\PlayerRigidBody.cs",
-              "RelativeDocumentMoniker": "PlayerRigidBody.cs",
-              "ToolTip": "C:\\Users\\jonma\\Documents\\GitHub\\troubleshot\\PlayerRigidBody.cs",
-              "RelativeToolTip": "PlayerRigidBody.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-02T22:17:40.907Z"
             }
           ]
         }

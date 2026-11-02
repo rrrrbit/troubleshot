@@ -1,2 +1,2 @@
-﻿61593
-C:/Users/jonma/Godot/Editors/.editor_config/TROUBLESHOT/Godot_v4.7.1-stable_mono_win64.exe
+﻿51560
+C:/Users/jonma/Godot/Editors/.editor_config/TROUBLESHOT/Godot_v4.7.2-stable_mono_win64.exe

@@ -19,10 +19,6 @@ run/main_scene="uid://cjmfij3u0dxh5"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
-[autoload]
-
-GLOBAL="*res://Scripts/GDScript/!GLOBAL.gd"
-
 [display]
 
 window/vsync/vsync_mode=3

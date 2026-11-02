@@ -1,3 +1,5 @@
+Health
+Node
 Line2D
 TextureRect
 ParallaxBackground
@@ -11,5 +13,3 @@ CollisionPolygon2D
 Marker2D
 Node2D
 CanvasLayer
-ColorRect
-CanvasModulate

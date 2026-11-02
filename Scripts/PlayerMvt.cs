@@ -186,7 +186,6 @@ public partial class PlayerMvt : CharacterBody2D
         CalculateTouches();
         List<Vector2> normals = rb.GetAllCollisionNormals();
 
-
         Vector2 lastCollisionNormal = Vector2.Zero;
         if (GetLastSlideCollision() != null)
         {
@@ -202,12 +201,9 @@ public partial class PlayerMvt : CharacterBody2D
             _hasBounced = true;
         }
 
-        if (_isOnFloor)
-        {
-            _jumpsLeft = 1;
-        }
+        if (_isOnFloor) _jumpsLeft = 1;
+            
 
-        #region input-dependent logic
         if (Input.IsActionJustPressed("dash") && !_direction.IsZeroApprox())
         {
             Velocity = Velocity with { Y = 0 };
@@ -215,9 +211,14 @@ public partial class PlayerMvt : CharacterBody2D
         }
 
         HandleJump(normals);
+        HandleXMvt(dt);
+        _velLast = Velocity;
+        MoveAndSlide();
+        UpdateShader(dt);
+    }
 
-        #region x movement
-
+    private void HandleXMvt(float dt)
+    {
         if (!_isDashing)
         {
             if (_direction.X != 0 && Mathf.Abs(Velocity.X) <= _SPEED_MAX)
@@ -231,15 +232,8 @@ public partial class PlayerMvt : CharacterBody2D
                 else _dragState = DragState.GROUND;
             }
             else _dragState = DragState.AIR;
-
             HandleDrag(dt);
         }
-
-        #endregion
-        #endregion
-        _velLast = Velocity;
-        MoveAndSlide();
-        UpdateShader(dt);
     }
 
     private void HandleDrag(float dt)

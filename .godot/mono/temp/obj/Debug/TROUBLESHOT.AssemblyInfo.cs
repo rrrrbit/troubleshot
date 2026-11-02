@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TROUBLESHOT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+41818fa14940390df57eb48b371067082a6a8cc7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e76d37e4da7e5b775f8355ad29e9a0eda141b36")]
 [assembly: System.Reflection.AssemblyProductAttribute("TROUBLESHOT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TROUBLESHOT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
