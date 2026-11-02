@@ -2,6 +2,7 @@ using Godot;
 using System;
 
 namespace TROUBLESHOT.Scripts;
+[GlobalClass]
 public partial class Player : Node
 {
 	// Called when the node enters the scene tree for the first time.
@@ -14,5 +15,10 @@ public partial class Player : Node
 	public override void _Process(double delta)
 	{
 		
+	}
+	
+	public void OnDie()
+	{
+		GD.Print("died");
 	}
 }

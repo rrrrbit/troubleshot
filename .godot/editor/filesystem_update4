@@ -1,9 +1,9 @@
+res://Scripts/Player.cs
 res://Scripts/AimLine.cs
 res://Scripts/PlayerCamera.cs
 res://Scripts/Cursor2.cs
 res://Scripts/PlayerRigidBody.cs
-res://Scripts/PlayerMvt.cs
 res://Scripts/Health.cs
+res://Scripts/PlayerMvt.cs
 res://Scenes/test_0_dotnet.tscn
 res://Assets/player_script.gdshader
-res://Scripts/Player.cs

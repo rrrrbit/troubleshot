@@ -28,4 +28,9 @@ public partial class Health : Node
             EmitSignal(SignalName.Died);
         }
     }
+
+    public override void _Ready()
+    {
+        ChangeHealth(0);
+    }
 }
